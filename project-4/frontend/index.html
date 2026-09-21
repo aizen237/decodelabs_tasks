@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pipeline — Job Application Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="wrap">
+
+    <header class="site-header">
+      <div class="header-title">
+        <span class="eyebrow-mono">/ job-tracker</span>
+        <h1>Pipeline</h1>
+      </div>
+      <button class="btn-primary" id="openFormBtn">+ Log application</button>
+    </header>
+
+    <section class="funnel-section">
+      <div class="funnel-bar" id="funnelBar">
+        <div class="funnel-segment" data-status="Applied" style="--w: 0%">
+          <span class="funnel-count">0</span>
+          <span class="funnel-label">Applied</span>
+        </div>
+        <div class="funnel-segment" data-status="Interview" style="--w: 0%">
+          <span class="funnel-count">0</span>
+          <span class="funnel-label">Interview</span>
+        </div>
+        <div class="funnel-segment" data-status="Offer" style="--w: 0%">
+          <span class="funnel-count">0</span>
+          <span class="funnel-label">Offer</span>
+        </div>
+        <div class="funnel-segment" data-status="Rejected" style="--w: 0%">
+          <span class="funnel-count">0</span>
+          <span class="funnel-label">Rejected</span>
+        </div>
+      </div>
+      <p class="funnel-caption" id="funnelCaption">Fetching your pipeline…</p>
+    </section>
+
+    <section class="form-panel" id="formPanel">
+      <form id="applicationForm">
+        <div class="field-row">
+          <label>Company
+            <input type="text" id="companyInput" required placeholder="e.g. Ethio Telecom">
+          </label>
+          <label>Role
+            <input type="text" id="roleInput" required placeholder="e.g. Backend Engineer Intern">
+          </label>
+        </div>
+        <div class="field-row">
+          <label>Date applied
+            <input type="date" id="dateInput" required>
+          </label>
+          <label>Link <span class="optional-mono">optional</span>
+            <input type="url" id="linkInput" placeholder="https://">
+          </label>
+        </div>
+        <label class="full-width">Notes <span class="optional-mono">optional</span>
+          <textarea id="notesInput" rows="2" placeholder="Referral, recruiter contact, anything worth remembering"></textarea>
+        </label>
+        <div class="form-actions">
+          <button type="button" class="btn-ghost" id="cancelFormBtn">Cancel</button>
+          <button type="submit" class="btn-primary">Save application</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <div class="list-header">
+        <h2>Applications</h2>
+        <span class="list-count-mono" id="listCount">0 total</span>
+      </div>
+
+      <div id="statusMessage" class="status-message" role="status"></div>
+
+      <div id="applicationsList" class="applications-list"></div>
+
+      <div id="emptyState" class="empty-state" hidden>
+        <p class="empty-title">No applications logged yet</p>
+        <p class="empty-sub">Click "+ Log application" to add your first one.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
